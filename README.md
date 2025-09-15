@@ -1,21 +1,15 @@
 # ZeroPath Security for Visual Studio Code (Alpha)
 
-<div align="center">
-  <br />
-  <img src="media/ZeroPathPatch.png" alt="ZeroPath" height="64" />
-  <br />
-  <br />
-  
-  **AI-powered application security platform integration for VS Code**
-  
-  ⚠️ **ALPHA VERSION - This extension is in early development**
-  
-  [![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue.svg)](https://marketplace.visualstudio.com/items?itemName=ZeroPath.zeropath-security)
-  [![Version](https://img.shields.io/badge/version-0.0.1--alpha-red.svg)](https://marketplace.visualstudio.com/items?itemName=ZeroPath.zeropath-security)
-  [![Status](https://img.shields.io/badge/status-alpha-yellow.svg)](https://github.com/ZeroPathAI/zeropath-vscode-plugin)
-  [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ZeroPathAI/zeropath-vscode-plugin/blob/main/LICENSE)
-  <br />
-</div>
+![ZeroPath Logo](media/ZeroPathPatch.png)
+
+**AI-powered application security platform integration for VS Code**
+
+⚠️ **ALPHA VERSION - This extension is in early development**
+
+[![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue.svg)](https://marketplace.visualstudio.com/items?itemName=ZeroPath.zeropath-security)
+[![Version](https://img.shields.io/badge/version-0.0.2--alpha-red.svg)](https://marketplace.visualstudio.com/items?itemName=ZeroPath.zeropath-security)
+[![Status](https://img.shields.io/badge/status-alpha-yellow.svg)](https://github.com/ZeroPathAI/zeropath-vscode-plugin)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ZeroPathAI/zeropath-vscode-plugin/blob/main/LICENSE)
 
 ## Overview
 
@@ -243,6 +237,12 @@ This extension is licensed under the [MIT License](LICENSE).
 
 ## Changelog
 
+### Version 0.0.2-alpha
+- Fixed README markdown compatibility for VS Code marketplace
+- Removed HTML tags that don't render properly
+- Security fixes: Removed test PHP webshell files
+- Replaced suspicious code patterns to avoid false positive antivirus detections
+
 ### Version 0.0.1-alpha
 - Initial alpha release
 - Interactive sidebar interface for managing security scans (alpha)
@@ -255,8 +255,6 @@ This extension is licensed under the [MIT License](LICENSE).
 
 ---
 
-<div align="center">
-  <strong>Built with ❤️ by the ZeroPath Team</strong>
-  
-  [Website](https://zeropath.com) • [Documentation](https://docs.zeropath.com) • [Support](mailto:support@zeropath.com)
-</div>
+**Built with ❤️ by the ZeroPath Team**
+
+[Website](https://zeropath.com) • [Documentation](https://docs.zeropath.com) • [Support](mailto:support@zeropath.com)

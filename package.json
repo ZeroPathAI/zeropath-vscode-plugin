@@ -2,7 +2,7 @@
   "name": "zeropath-security",
   "displayName": "ZeroPath Security",
   "description": "AI-powered application security scanning with SAST, SCA, IaC, Secrets, and EoL analysis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "ZeroPath",
   "icon": "media/icon.png",
   "repository": {
