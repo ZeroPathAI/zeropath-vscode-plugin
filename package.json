@@ -18,17 +18,22 @@
     "vscode": "^1.74.0"
   },
   "categories": [
-    "Other",
     "Linters",
-    "Debuggers"
+    "Programming Languages",
+    "Other"
   ],
   "keywords": [
     "security",
     "sast",
+    "code-analysis",
+    "code-quality",
+    "static-code-analysis",
+    "vulnerabilities",
+    "source",
+    "vulnerability",
     "sca",
     "iac",
     "secrets",
-    "vulnerability",
     "static analysis"
   ],
   "activationEvents": [
