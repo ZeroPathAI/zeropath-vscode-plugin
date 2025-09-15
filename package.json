@@ -18,9 +18,9 @@
     "vscode": "^1.74.0"
   },
   "categories": [
-    "Security",
-    "Tools",
-    "Coding"
+    "Linters",
+    "Testing",
+    "Other"
   ],
   "keywords": [
     "security",
