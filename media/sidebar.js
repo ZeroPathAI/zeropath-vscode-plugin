@@ -122,7 +122,7 @@ function renderScans(scans) {
         statusDiv.appendChild(statusBadge);
         
         const issueCount = createElement('span');
-        issueCount.textContent = ' ' + (scan.openIssuesCount || scan.issuesCount || 0) + ' issues';
+        issueCount.textContent = ' ' + (scan.issueCounts?.open || 0) + ' issues';
         statusDiv.appendChild(issueCount);
         
         scanHeader.appendChild(statusDiv);
@@ -294,59 +294,152 @@ function renderIssues(issues, scanId) {
             const expandedDiv = createElement('div', 'issue-expanded');
             expandedDiv.style.cssText = 'margin-top: 10px; padding: 10px; background: var(--vscode-editor-inactiveSelectionBackground); border-radius: 3px;';
             
-            // Dashboard link
+            // Dashboard link - styled as a small link instead of button
             if (issue.id) {
-                const dashboardUrl = 'https://zeropath.com/app/issues/' + issue.id;
-                const dashboardBtn = document.createElement('button');
-                dashboardBtn.setAttribute('data-url', dashboardUrl);
-                dashboardBtn.style.cssText = 'background: var(--vscode-button-secondaryBackground); color: var(--vscode-button-secondaryForeground); margin-bottom: 10px;';
-                dashboardBtn.textContent = '🔗 View in Dashboard';
-                dashboardBtn.onclick = (e) => {
+                const dashboardLinkDiv = createElement('div');
+                dashboardLinkDiv.style.cssText = 'margin-bottom: 10px; font-size: 11px;';
+                
+                const dashboardLink = document.createElement('a');
+                dashboardLink.href = '#';
+                dashboardLink.style.cssText = 'color: var(--vscode-textLink-foreground); text-decoration: none; cursor: pointer;';
+                dashboardLink.textContent = '🔗 View in Dashboard';
+                dashboardLink.onclick = (e) => {
+                    e.preventDefault();
                     e.stopPropagation();
-                    openExternal(dashboardUrl);
+                    openExternal('https://zeropath.com/app/issues/' + issue.id);
                 };
-                expandedDiv.appendChild(dashboardBtn);
+                dashboardLinkDiv.appendChild(dashboardLink);
+                expandedDiv.appendChild(dashboardLinkDiv);
             }
             
-            // Description
+            // Description section with better formatting
             if (issue.generatedDescription) {
+                const descSection = createElement('div');
+                descSection.style.cssText = 'margin-bottom: 15px; padding: 10px; background: var(--vscode-textBlockQuote-background); border-left: 3px solid var(--vscode-textBlockQuote-border); border-radius: 2px;';
+                
                 const descTitle = createElement('strong');
-                descTitle.textContent = 'Description:';
-                expandedDiv.appendChild(descTitle);
+                descTitle.style.cssText = 'display: block; margin-bottom: 8px; color: var(--vscode-foreground);';
+                descTitle.textContent = '📋 Description';
+                descSection.appendChild(descTitle);
                 
                 const descContent = createElement('div');
-                descContent.style.cssText = 'white-space: pre-wrap; font-family: monospace; font-size: 11px; margin-top: 5px; margin-bottom: 10px;';
+                descContent.style.cssText = 'white-space: pre-wrap; font-size: 12px; line-height: 1.5; color: var(--vscode-foreground);';
                 descContent.textContent = issue.generatedDescription;
-                expandedDiv.appendChild(descContent);
+                descSection.appendChild(descContent);
+                
+                expandedDiv.appendChild(descSection);
             }
             
-            // Apply patch button if available
+            // Patch section if available
             if (patch && patch.gitDiff) {
-                const patchSection = createElement('div');
-                patchSection.style.marginTop = '10px';
+                const patchContainer = createElement('div');
+                patchContainer.style.cssText = 'margin-top: 15px; padding: 10px; background: var(--vscode-textBlockQuote-background); border-left: 3px solid var(--vscode-textLink-foreground); border-radius: 2px;';
+                
+                const patchTitle = createElement('strong');
+                patchTitle.style.cssText = 'display: block; margin-bottom: 10px; color: var(--vscode-textLink-foreground);';
+                patchTitle.textContent = '🔧 Available Patch';
+                patchContainer.appendChild(patchTitle);
+                
+                // Patch description if available
+                if (patch.prDescription || patch.description) {
+                    const patchDescDiv = createElement('div');
+                    patchDescDiv.style.cssText = 'margin-bottom: 10px;';
+                    
+                    const patchDescLabel = createElement('strong');
+                    patchDescLabel.textContent = 'Fix Description:';
+                    patchDescDiv.appendChild(patchDescLabel);
+                    
+                    const patchDescContent = createElement('div');
+                    patchDescContent.style.cssText = 'white-space: pre-wrap; margin-top: 5px; font-size: 11px; line-height: 1.4; color: var(--vscode-descriptionForeground);';
+                    patchDescContent.textContent = patch.prDescription || patch.description || '';
+                    patchDescDiv.appendChild(patchDescContent);
+                    
+                    patchContainer.appendChild(patchDescDiv);
+                }
+                
+                // Git diff preview
+                const diffPreviewDiv = createElement('div');
+                diffPreviewDiv.style.cssText = 'margin: 10px 0;';
+                
+                const diffTitle = createElement('strong');
+                diffTitle.textContent = 'Diff Preview:';
+                diffPreviewDiv.appendChild(diffTitle);
+                
+                const diffContent = createElement('pre');
+                diffContent.style.cssText = 'background: var(--vscode-editor-background); padding: 8px; border-radius: 3px; overflow-x: auto; font-family: monospace; font-size: 11px; line-height: 1.4; margin-top: 5px; max-height: 200px; overflow-y: auto;';
+                
+                // Format diff with colors for added/removed lines
+                const diffLines = patch.gitDiff.split('\n').slice(0, 30); // Show first 30 lines
+                diffLines.forEach(line => {
+                    const lineSpan = createElement('div');
+                    if (line.startsWith('+')) {
+                        lineSpan.style.color = 'var(--vscode-gitDecoration-addedResourceForeground, #00aa00)';
+                    } else if (line.startsWith('-')) {
+                        lineSpan.style.color = 'var(--vscode-gitDecoration-deletedResourceForeground, #ff4444)';
+                    } else if (line.startsWith('@@')) {
+                        lineSpan.style.color = 'var(--vscode-textLink-foreground)';
+                    } else {
+                        lineSpan.style.color = 'var(--vscode-foreground)';
+                    }
+                    lineSpan.textContent = line;
+                    diffContent.appendChild(lineSpan);
+                });
+                
+                if (patch.gitDiff.split('\n').length > 30) {
+                    const moreLines = createElement('div');
+                    moreLines.style.cssText = 'color: var(--vscode-descriptionForeground); font-style: italic; margin-top: 5px;';
+                    moreLines.textContent = '... ' + (patch.gitDiff.split('\n').length - 30) + ' more lines ...';
+                    diffContent.appendChild(moreLines);
+                }
+                
+                diffPreviewDiv.appendChild(diffContent);
+                patchContainer.appendChild(diffPreviewDiv);
+                
+                // Action buttons
+                const patchActions = createElement('div');
+                patchActions.style.cssText = 'margin-top: 10px; display: flex; gap: 8px;';
                 
                 const applyBtn = document.createElement('button');
                 applyBtn.className = 'primary';
-                applyBtn.style.marginRight = '8px';
                 applyBtn.textContent = '✓ Apply This Patch';
                 applyBtn.onclick = (e) => {
                     e.stopPropagation();
                     applyPatchFromStore(issue.id);
                 };
-                patchSection.appendChild(applyBtn);
+                patchActions.appendChild(applyBtn);
                 
                 if (patch.prLink) {
                     const prBtn = document.createElement('button');
-                    prBtn.setAttribute('data-url', patch.prLink);
-                    prBtn.textContent = 'View PR';
+                    prBtn.textContent = '🔗 View PR';
                     prBtn.onclick = (e) => {
                         e.stopPropagation();
                         openExternal(patch.prLink);
                     };
-                    patchSection.appendChild(prBtn);
+                    patchActions.appendChild(prBtn);
                 }
                 
-                expandedDiv.appendChild(patchSection);
+                patchContainer.appendChild(patchActions);
+                expandedDiv.appendChild(patchContainer);
+            } else if (patch) {
+                // Patch exists but no diff yet - show request patch button
+                const patchPendingDiv = createElement('div');
+                patchPendingDiv.style.cssText = 'margin-top: 10px; padding: 10px; background: var(--vscode-textBlockQuote-background); border-left: 3px solid var(--vscode-textPreformat-foreground); border-radius: 2px;';
+                
+                const pendingText = createElement('div');
+                pendingText.style.cssText = 'margin-bottom: 8px; color: var(--vscode-descriptionForeground);';
+                pendingText.textContent = 'A patch is available but needs to be fetched.';
+                patchPendingDiv.appendChild(pendingText);
+                
+                const requestBtn = document.createElement('button');
+                requestBtn.className = 'primary';
+                requestBtn.textContent = '📥 Request Patch';
+                requestBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    requestPatch(issue.id);
+                };
+                patchPendingDiv.appendChild(requestBtn);
+                
+                expandedDiv.appendChild(patchPendingDiv);
             }
             
             issueItem.appendChild(expandedDiv);
