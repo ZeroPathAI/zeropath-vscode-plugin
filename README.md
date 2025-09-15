@@ -1,4 +1,4 @@
-# ZeroPath Security for Visual Studio Code
+# ZeroPath Security for Visual Studio Code (Alpha)
 
 <div align="center">
   <br />
@@ -8,13 +8,19 @@
   
   **AI-powered application security platform integration for VS Code**
   
+  ⚠️ **ALPHA VERSION - This extension is in early development**
+  
   [![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue.svg)](https://marketplace.visualstudio.com/items?itemName=zeropath.zeropath-security)
-  [![Version](https://img.shields.io/badge/version-0.0.1-orange.svg)](https://marketplace.visualstudio.com/items?itemName=zeropath.zeropath-security)
+  [![Version](https://img.shields.io/badge/version-0.0.1--alpha-red.svg)](https://marketplace.visualstudio.com/items?itemName=zeropath.zeropath-security)
+  [![Status](https://img.shields.io/badge/status-alpha-yellow.svg)](https://github.com/ZeroPathAI/zeropath-vscode-plugin)
   [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ZeroPathAI/zeropath-vscode-plugin/blob/main/LICENSE)
   <br />
 </div>
 
 ## Overview
+
+> **🚧 Alpha Release Notice**  
+> This extension is currently in **alpha** stage. While core features are functional, you may encounter bugs or incomplete functionality. We welcome your feedback and bug reports to help improve the extension.
 
 The ZeroPath Security extension integrates the [ZeroPath](https://zeropath.com) AI-powered security platform directly into VS Code. View security scans, manage vulnerabilities, and apply AI-generated patches without leaving your development environment.
 
@@ -55,6 +61,9 @@ The ZeroPath Security extension integrates the [ZeroPath](https://zeropath.com) 
 - Quick access to all ZeroPath features without leaving VS Code
 
 ## Installation
+
+> **⚠️ Alpha Version Warning**  
+> This is an alpha release intended for early adopters and testing. Features may change, and stability is not guaranteed.
 
 1. Open VS Code
 2. Go to Extensions (Ctrl+Shift+X / Cmd+Shift+X)
@@ -174,7 +183,10 @@ The extension automatically detects your Git repository and connects it to your 
 
 ## Support & Feedback
 
+**Your feedback is crucial during this alpha phase!** Please report any issues or suggestions.
+
 - **Report Issues:** [GitHub Issues](https://github.com/ZeroPathAI/zeropath-vscode-plugin/issues)
+- **Alpha Feedback:** Please tag issues with `[ALPHA]` for priority review
 - **Documentation:** [ZeroPath Docs](https://docs.zeropath.com)
 - **Email Support:** support@zeropath.com
 - **Website:** [zeropath.com](https://zeropath.com)
@@ -199,9 +211,26 @@ The extension can be configured through VS Code settings:
 
 We welcome contributions! Please visit our [GitHub repository](https://github.com/ZeroPathAI/zeropath-vscode-plugin) for more information.
 
+## Alpha Limitations
+
+As an alpha release, please be aware of the following:
+
+- **Stability:** The extension may crash or behave unexpectedly
+- **Features:** Some features may be incomplete or subject to change
+- **Performance:** Performance optimizations are ongoing
+- **Compatibility:** May not work with all VS Code configurations
+- **Data:** Do not use for production-critical security assessments
+
 ## Roadmap
 
-## Upcoming Features
+### Alpha to Beta Milestones
+- Improved error handling and stability
+- Performance optimizations for large repositories
+- Enhanced UI/UX based on user feedback
+- Comprehensive testing coverage
+- Documentation improvements
+
+### Upcoming Features
 
 - **On-demand scanning** - Trigger new security scans directly from VS Code
 - **Inline annotations** - View security issues as code annotations
@@ -214,13 +243,13 @@ This extension is licensed under the [MIT License](LICENSE).
 
 ## Changelog
 
-### Version 0.0.1
-- Initial release
-- Interactive sidebar interface for managing security scans
-- View and browse Full Scans and PR Scans
-- Search and filter security issues by severity and status
-- Apply AI-generated security patches
-- Pull request integration for collaborative fixes
+### Version 0.0.1-alpha
+- Initial alpha release
+- Interactive sidebar interface for managing security scans (alpha)
+- View and browse Full Scans and PR Scans (alpha)
+- Search and filter security issues by severity and status (alpha)
+- Apply AI-generated security patches (alpha)
+- Pull request integration for collaborative fixes (alpha)
 - Secure credential storage
 - Support for GitHub, GitLab, Bitbucket, and generic Git repositories
 
