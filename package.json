@@ -1,0 +1,169 @@
+{
+  "name": "zeropath-security",
+  "displayName": "Zeropath Security",
+  "description": "AI-powered application security scanning with SAST, SCA, IaC, Secrets, and EoL analysis",
+  "version": "0.0.1",
+  "publisher": "zeropath",
+  "icon": "media/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZeroPathAI/zeropath-vscode-plugin.git"
+  },
+  "homepage": "https://github.com/ZeroPathAI/zeropath-vscode-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/ZeroPathAI/zeropath-vscode-plugin/issues"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Linters",
+    "Debuggers"
+  ],
+  "keywords": [
+    "security",
+    "sast",
+    "sca",
+    "iac",
+    "secrets",
+    "vulnerability",
+    "static analysis"
+  ],
+  "activationEvents": [
+    "onCommand:zeropath.configureCredentials",
+    "onCommand:zeropath.listScans",
+    "onCommand:zeropath.showIssues",
+    "onCommand:zeropath.applyPatch",
+    "onCommand:zeropath.openSetup",
+    "onCommand:zeropath.openScanView",
+    "onView:zeropathView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "zeropath",
+          "title": "Zeropath",
+          "icon": "media/zeropath.svg"
+        }
+      ]
+    },
+    "views": {
+      "zeropath": [
+        {
+          "id": "zeropathView",
+          "name": "Zeropath",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "zeropath.openSetup",
+        "title": "Configure",
+        "category": "Zeropath"
+      },
+      {
+        "command": "zeropath.configureCredentials",
+        "title": "Configure Zeropath Credentials",
+        "category": "Zeropath"
+      },
+      {
+        "command": "zeropath.listScans",
+        "title": "List Zeropath Scans (Current Repo)",
+        "category": "Zeropath"
+      },
+      {
+        "command": "zeropath.showIssues",
+        "title": "Show Zeropath Issues (Active)",
+        "category": "Zeropath"
+      },
+      {
+        "command": "zeropath.applyPatch",
+        "title": "Apply Zeropath Patch for Issue",
+        "category": "Zeropath"
+      },
+      {
+        "command": "zeropath.openScanView",
+        "title": "View Scans",
+        "category": "Zeropath"
+      }
+    ],
+    "menus": {
+      "view/title": [],
+      "view/item/context": [
+        {
+          "command": "zeropath.showIssues",
+          "when": "view == zeropathView && viewItem == scan",
+          "group": "inline"
+        }
+      ]
+    },
+    "viewsWelcome": [],
+    "configuration": {
+      "title": "Zeropath Security",
+      "properties": {
+        "zeropath.clientId": {
+          "type": "string",
+          "description": "Zeropath API Token Id (stored in Secret Storage when configured)",
+          "scope": "machine-overridable"
+        },
+        "zeropath.clientSecret": {
+          "type": "string",
+          "description": "Zeropath API Token Secret (stored in Secret Storage when configured)",
+          "scope": "machine-overridable"
+        },
+        "zeropath.vcs": {
+          "type": "string",
+          "enum": [
+            "github",
+            "gitlab",
+            "bitbucket",
+            "generic"
+          ],
+          "default": "github",
+          "description": "Primary VCS used when resolving repository by URL",
+          "scope": "machine-overridable"
+        },
+        "zeropath.apiBaseUrl": {
+          "type": "string",
+          "default": "https://zeropath.com",
+          "description": "Zeropath API base URL (e.g. https://zeropath.com)",
+          "scope": "window"
+        },
+        "zeropath.organizationId": {
+          "type": "string",
+          "description": "Optional Zeropath Organization ID (auto-detected via API token)",
+          "scope": "machine-overridable"
+        },
+        "zeropath.defaultScanType": {
+          "type": "string",
+          "enum": [
+            "FullScan",
+            "PrScan"
+          ],
+          "default": "FullScan",
+          "description": "Default scan type for listing scans/issues",
+          "scope": "window"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.126",
+    "@types/vscode": "^1.74.0",
+    "@vscode/vsce": "^3.6.0",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "axios": "^1.12.1"
+  }
+}
