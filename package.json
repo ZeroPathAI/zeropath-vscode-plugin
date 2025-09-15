@@ -1,9 +1,9 @@
 {
   "name": "zeropath-security",
-  "displayName": "Zeropath Security",
+  "displayName": "ZeroPath Security",
   "description": "AI-powered application security scanning with SAST, SCA, IaC, Secrets, and EoL analysis",
   "version": "0.0.1",
-  "publisher": "zeropath",
+  "publisher": "ZeroPath",
   "icon": "media/icon.png",
   "repository": {
     "type": "git",
@@ -46,7 +46,7 @@
       "activitybar": [
         {
           "id": "zeropath",
-          "title": "Zeropath",
+          "title": "ZeroPath",
           "icon": "media/zeropath.svg"
         }
       ]
@@ -55,7 +55,7 @@
       "zeropath": [
         {
           "id": "zeropathView",
-          "name": "Zeropath",
+          "name": "ZeroPath",
           "type": "webview"
         }
       ]
@@ -64,32 +64,32 @@
       {
         "command": "zeropath.openSetup",
         "title": "Configure",
-        "category": "Zeropath"
+        "category": "ZeroPath"
       },
       {
         "command": "zeropath.configureCredentials",
-        "title": "Configure Zeropath Credentials",
-        "category": "Zeropath"
+        "title": "Configure ZeroPath Credentials",
+        "category": "ZeroPath"
       },
       {
         "command": "zeropath.listScans",
-        "title": "List Zeropath Scans (Current Repo)",
-        "category": "Zeropath"
+        "title": "List ZeroPath Scans (Current Repo)",
+        "category": "ZeroPath"
       },
       {
         "command": "zeropath.showIssues",
-        "title": "Show Zeropath Issues (Active)",
-        "category": "Zeropath"
+        "title": "Show ZeroPath Issues (Active)",
+        "category": "ZeroPath"
       },
       {
         "command": "zeropath.applyPatch",
-        "title": "Apply Zeropath Patch for Issue",
-        "category": "Zeropath"
+        "title": "Apply ZeroPath Patch for Issue",
+        "category": "ZeroPath"
       },
       {
         "command": "zeropath.openScanView",
         "title": "View Scans",
-        "category": "Zeropath"
+        "category": "ZeroPath"
       }
     ],
     "menus": {
@@ -104,16 +104,16 @@
     },
     "viewsWelcome": [],
     "configuration": {
-      "title": "Zeropath Security",
+      "title": "ZeroPath Security",
       "properties": {
         "zeropath.clientId": {
           "type": "string",
-          "description": "Zeropath API Token Id (stored in Secret Storage when configured)",
+          "description": "ZeroPath API Token Id (stored in Secret Storage when configured)",
           "scope": "machine-overridable"
         },
         "zeropath.clientSecret": {
           "type": "string",
-          "description": "Zeropath API Token Secret (stored in Secret Storage when configured)",
+          "description": "ZeroPath API Token Secret (stored in Secret Storage when configured)",
           "scope": "machine-overridable"
         },
         "zeropath.vcs": {
@@ -131,12 +131,12 @@
         "zeropath.apiBaseUrl": {
           "type": "string",
           "default": "https://zeropath.com",
-          "description": "Zeropath API base URL (e.g. https://zeropath.com)",
+          "description": "ZeroPath API base URL (e.g. https://zeropath.com)",
           "scope": "window"
         },
         "zeropath.organizationId": {
           "type": "string",
-          "description": "Optional Zeropath Organization ID (auto-detected via API token)",
+          "description": "Optional ZeroPath Organization ID (auto-detected via API token)",
           "scope": "machine-overridable"
         },
         "zeropath.defaultScanType": {

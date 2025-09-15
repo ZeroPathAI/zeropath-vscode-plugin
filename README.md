@@ -131,12 +131,12 @@ The ZeroPath Security extension integrates the [ZeroPath](https://zeropath.com) 
 
 The extension provides the following commands (accessible via Command Palette - Ctrl/Cmd+Shift+P):
 
-- `Zeropath: Configure` - Set up your API credentials
-- `Zeropath: Configure Zeropath Credentials` - Update API tokens
-- `Zeropath: List Zeropath Scans (Current Repo)` - Browse all scans via command palette
-- `Zeropath: Show Zeropath Issues (Active)` - View issues for the current repository
-- `Zeropath: Apply Zeropath Patch for Issue` - Apply a specific patch
-- `Zeropath: View Scans` - Open the scan view in the sidebar
+- `ZeroPath: Configure` - Set up your API credentials
+- `ZeroPath: Configure ZeroPath Credentials` - Update API tokens
+- `ZeroPath: List ZeroPath Scans (Current Repo)` - Browse all scans via command palette
+- `ZeroPath: Show ZeroPath Issues (Active)` - View issues for the current repository
+- `ZeroPath: Apply ZeroPath Patch for Issue` - Apply a specific patch
+- `ZeroPath: View Scans` - Open the scan view in the sidebar
 
 ## How It Works
 
