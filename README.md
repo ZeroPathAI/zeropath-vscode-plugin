@@ -2,7 +2,7 @@
 
 <div align="center">
   <br />
-  <img src="media/ZeroPathPatch.svg" alt="ZeroPath" height="64" />
+  <img src="media/ZeroPathPatch.png" alt="ZeroPath" height="64" />
   <br />
   <br />
   
@@ -10,8 +10,8 @@
   
   ⚠️ **ALPHA VERSION - This extension is in early development**
   
-  [![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue.svg)](https://marketplace.visualstudio.com/items?itemName=zeropath.zeropath-security)
-  [![Version](https://img.shields.io/badge/version-0.0.1--alpha-red.svg)](https://marketplace.visualstudio.com/items?itemName=zeropath.zeropath-security)
+  [![VS Code Marketplace](https://img.shields.io/badge/VS%20Code-Marketplace-blue.svg)](https://marketplace.visualstudio.com/items?itemName=ZeroPath.zeropath-security)
+  [![Version](https://img.shields.io/badge/version-0.0.1--alpha-red.svg)](https://marketplace.visualstudio.com/items?itemName=ZeroPath.zeropath-security)
   [![Status](https://img.shields.io/badge/status-alpha-yellow.svg)](https://github.com/ZeroPathAI/zeropath-vscode-plugin)
   [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/ZeroPathAI/zeropath-vscode-plugin/blob/main/LICENSE)
   <br />
