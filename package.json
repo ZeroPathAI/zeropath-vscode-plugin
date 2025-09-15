@@ -2,7 +2,7 @@
   "name": "zeropath-security",
   "displayName": "ZeroPath Security",
   "description": "AI-powered application security scanning with SAST, SCA, IaC, Secrets, and EoL analysis",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "ZeroPath",
   "icon": "media/icon.png",
   "repository": {
@@ -18,12 +18,15 @@
     "vscode": "^1.74.0"
   },
   "categories": [
-    "Linters",
-    "Programming Languages",
-    "Other"
+    "Security",
+    "Tools",
+    "Coding"
   ],
   "keywords": [
     "security",
+    "security-tools",
+    "coding",
+    "tools",
     "sast",
     "code-analysis",
     "code-quality",
@@ -34,7 +37,9 @@
     "sca",
     "iac",
     "secrets",
-    "static analysis"
+    "static analysis",
+    "application-security",
+    "devsecops"
   ],
   "activationEvents": [
     "onCommand:zeropath.configureCredentials",
